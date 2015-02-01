@@ -21,7 +21,7 @@
 TARGET_SPECIFIC_HEADER_PATH += device/oppo/n3/include
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.selinux=permissive
 TARGET_KERNEL_CONFIG := cyanogenmod_n3_defconfig
 TARGET_KERNEL_SOURCE := kernel/oppo/n3
 
@@ -49,7 +49,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_NFC_CHIPSET := pn547
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/oppo/n3/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/oppo/n3/fstab.twrp
 
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
@@ -68,3 +68,11 @@ BOARD_SEPOLICY_UNION += \
 
 # Inherit from the proprietary version
 -include vendor/oppo/n3/BoardConfigVendor.mk
+
+# TWRP
+DEVICE_RESOLUTION := 1080x1920
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_USB_STORAGE := true
+TW_INCLUDE_JB_CRYPTO := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
